@@ -46,5 +46,7 @@ npm run dev
 
 ![Screenshot 2023-12-17 014322](https://github.com/smitjiwani/GIS-farm-planner/assets/78549024/6093d03d-e9eb-4586-847a-f9bcdb838e7c)
 
+## Resources
 
+- the database is sourced from Github (https://github.com/jinshijian/SoilHealthDB); a published article: Stewart, Ryan D., et al. The database compiled data from a set of soil health measurements collected across 41 countries worldwide, including 5,241 data entries from 281 published studies. It includes several soil health indicators and background indicators that describe factors such as climate, elevation, and soil type. Our goal in using this database is to perform comprehensive analyses of soil health changes related to cropland conservation management. Further, we use it for planning and assessing farms based on several factors like climate change, soil type, terrain, depth of soil, elevation, etc.
 
