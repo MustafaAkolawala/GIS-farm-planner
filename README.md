@@ -1,5 +1,11 @@
 # GIS based Farm planner
 
+## Proof of Concept
+
+Created a POC in Google Maps that represents potential farming sites based on different factors related to climate change, soil type, terrain, depth of soil, elevation, pH level, etc. It has a similar interface to the one proposed by us initially.
+
+<iframe src="https://www.google.com/maps/d/u/0/embed?mid=15l156HFL8j_sNKg50w9Ndq9V23mUAXk&ehbc=2E312F" width="640" height="480"></iframe>
+
 ## Introduction
 
 This is a GIS based farm planner application that allows users to create a farm plan by drawing polygons on a map. It helps the farmer predict the soil quality, irrigation requirements and crop yield for the farm. The application is built using React, Redux, Mapbox, Turf.js, Material UI and React Leaflet.
