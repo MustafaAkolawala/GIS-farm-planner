@@ -32,7 +32,8 @@ import db from '../db.js';
       Yield_T: null,
       Weed_C: null,
       Weed_T: null,
-    })
+    },
+    )
     console.log('Added sample farms!')
     process.exit(0)
   } catch (err) {
