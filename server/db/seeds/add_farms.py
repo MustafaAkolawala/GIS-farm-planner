@@ -4,7 +4,7 @@ from sqlalchemy import create_engine
 
 # CSV file path and database connection string
 csv_file_path = "/app/data/Soil_data.csv"
-db_connection_string = "postgresql://username:password@localhost:5432/username"
+db_connection_string = "postgresql://username:password@db:5432/username"
 
 # Read CSV file into a Pandas DataFrame
 data = pd.read_csv(csv_file_path)
