@@ -1,21 +1,21 @@
-import db from '../db.js';
+import db from '../db.js'
 
 ;(async () => {
   try {
-    await db('farms').insert ({
+    await db('farms').insert({
       SiteInfor: 'New York',
       Country: 'USA',
       Latitude: 40.71,
       Longitude: -74.01,
       Elevation: 3.5,
-      MAT: null ,
+      MAT: null,
       MAP: null,
-      ClimateType: null,
+      // ClimateType: null,
       SamplingDepth: null,
       SamplingThickness: null,
       SandPerc: null,
       SiltPerc: null,
-      ClayPerc: null,
+      // ClayPerc: null,
       Texture: null,
       SoilpH: null,
       CoverCrop: 'White_clover',
@@ -30,10 +30,9 @@ import db from '../db.js';
       ControlDescription: 'Fallow',
       Yield_C: null,
       Yield_T: null,
-      Weed_C: null,
-      Weed_T: null,
-    },
-    )
+      // Weed_C: null,
+      // Weed_T: null,
+    })
     console.log('Added sample farms!')
     process.exit(0)
   } catch (err) {

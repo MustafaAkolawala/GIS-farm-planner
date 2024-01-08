@@ -1,4 +1,4 @@
-import db from '../db.js';
+import db from '../db.js'
 
 ;(async () => {
   try {
@@ -12,12 +12,12 @@ import db from '../db.js';
       table.float('Elevation').notNullable()
       table.integer('MAT')
       table.integer('MAP')
-      table.string('ClimateType')
+      // table.string('ClimateType')
       table.string('SamplingDepth')
       table.string('SamplingThickness')
       table.integer('SandPerc')
       table.integer('SiltPerc')
-      table.integer('ClayPerc')
+      // table.integer('ClayPerc')
       table.string('Texture')
       table.integer('SoilpH')
       table.string('CoverCrop').notNullable()
@@ -32,8 +32,8 @@ import db from '../db.js';
       table.string('ControlDescription')
       table.integer('Yield_C')
       table.integer('Yield_T')
-      table.integer('Weed_C')
-      table.integer('Weed_T')
+      // table.integer('Weed_C')
+      // table.integer('Weed_T')
       table.timestamps(true, true)
     })
     console.log('farms table created!')
@@ -43,4 +43,3 @@ import db from '../db.js';
     process.exit(1)
   }
 })()
-
