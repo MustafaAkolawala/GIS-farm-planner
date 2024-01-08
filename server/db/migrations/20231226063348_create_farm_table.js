@@ -1,5 +1,4 @@
 import db from '../db.js'
-
 ;(async () => {
   try {
     await db.schema.dropTableIfExists('farms')
@@ -10,7 +9,7 @@ import db from '../db.js'
       table.float('Latitude').notNullable()
       table.float('Longitude').notNullable()
       table.float('Elevation').notNullable()
-      table.integer('MAT')
+      // table.integer('MAT')
       table.integer('MAP')
       // table.string('ClimateType')
       table.string('SamplingDepth')

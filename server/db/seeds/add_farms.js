@@ -1,5 +1,4 @@
 import db from '../db.js'
-
 ;(async () => {
   try {
     await db('farms').insert({
@@ -8,7 +7,7 @@ import db from '../db.js'
       Latitude: 40.71,
       Longitude: -74.01,
       Elevation: 3.5,
-      MAT: null,
+      // MAT: null,
       MAP: null,
       // ClimateType: null,
       SamplingDepth: null,
