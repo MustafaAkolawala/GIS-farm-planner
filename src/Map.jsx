@@ -32,20 +32,20 @@ const Map = () => {
 
     const _onCreated = e => {
         console.log(e)
-        // console.log("Latitude: ",e.layer._latlng.lat)
-        // console.log("Longitude: ",e.layer._latlng.lng)
+        console.log("Latitude: ",e.layer._latlng.lat)
+        console.log("Longitude: ",e.layer._latlng.lng)
     }
 
     const _onEdited = e => {
         console.log(e)
-        // console.log("Latitude: ",e.layer._latlng.lat)
-        // console.log("Longitude: ",e.layer._latlng.lng)
+        console.log("Latitude: ",e.layer._latlng.lat)
+        console.log("Longitude: ",e.layer._latlng.lng)
     }
 
     const _onDeleted = e => {
         console.log(e)
-        // console.log("Latitude: ",e.layer._latlng.lat)
-        // console.log("Longitude: ",e.layer._latlng.lng)
+        console.log("Latitude: ",e.layer._latlng.lat)
+        console.log("Longitude: ",e.layer._latlng.lng)
     }
 
 
