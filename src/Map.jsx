@@ -43,18 +43,21 @@ const Map = () => {
         console.log(e)
         console.log("Latitude: ", e.layer._latlng.lat)
         console.log("Longitude: ", e.layer._latlng.lng)
+        setCoordinates([e.layer._latlng.lat, e.layer._latlng.lng])
     }
 
     const _onEdited = e => {
         console.log(e)
         console.log("Latitude: ", e.layer._latlng.lat)
         console.log("Longitude: ", e.layer._latlng.lng)
+        setCoordinates([e.layer._latlng.lat, e.layer._latlng.lng])
     }
 
     const _onDeleted = e => {
         console.log(e)
         console.log("Latitude: ", e.layer._latlng.lat)
         console.log("Longitude: ", e.layer._latlng.lng)
+        setCoordinates([e.layer._latlng.lat, e.layer._latlng.lng])
     }
 
     const HandleCoordinates = () => {
@@ -62,11 +65,24 @@ const Map = () => {
             setCoordinates([latitude, longitude])
     }
 
+    const handleLocations = async () => {
+        console.log(typeof (coordinates[0]))
+        const res = await fetch(`http://localhost:5000/getnearestpoints`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ Lat: coordinates[0], Long: coordinates[1] }),
+        })
+        const data = await res.json()
+        setFarms(data)
+    }
+
 
     useEffect(() => {
         console.log(coordinates)
         console.log(farms)
-    }, [coordinates])
+    }, [farms])
 
     return (
         <div className='Map__main'>
@@ -96,15 +112,15 @@ const Map = () => {
                         />
 
                         {/* Conditional Marker and Popup for India */}
-                        {showMarker && (
+                        {/* {showMarker && (
                             <Marker position={coordinates}>
                                 <Popup>
-                                    {/* add location name based on coordinates in h2 and coordinates in p */}
+                                    add location name based on coordinates in h2 and coordinates in p
                                     <h2></h2>
                                     <p>Latitude: {coordinates[0]}, longitude: {coordinates[1]}</p>
                                 </Popup>
                             </Marker>
-                        )}
+                        )} */}
 
                         {/* {Object.keys(farms).map((farm) => {
                         return (
@@ -119,17 +135,19 @@ const Map = () => {
                     })} */}
 
                         {/* Had to do this to map the array, Before the endpoint was returning an object and now it returns an array */}
-                        {/* {farms.map((farm) => {
-                        console.log(farm)
-                        return (
-                            <Marker
-                                key={farm["id"]}
-                                position={[farm["latitude"], farm["longitude"]]}
+                        {farms.length != 0 && farms.map((farm) => {
+                            console.log(farm["latitude"])
+                            return (
+                                <Marker
+                                    key={farm["id"]}
+                                    position={[farm["latitude"], farm["longitude"]]}
+                                    pathOptions={{ color: 'red' }}
+
                                 >
-                                <Tooltip>Cover Crop: {farm["covercrop"]} | Cover Crop Group: {farm["covercropgroup"]} | Grain Crop: {farm["graincrop"]} | Grain Crop Group: {farm["graincropgroup"]}</Tooltip>
-                            </Marker>
-                        )
-                    })} */}
+                                    <Tooltip>Cover Crop: {farm["covercrop"]} | Cover Crop Group: {farm["covercropgroup"]} | Grain Crop: {farm["graincrop"]} | Grain Crop Group: {farm["graincropgroup"]}</Tooltip>
+                                </Marker>
+                            )
+                        })}
 
 
                     </MapContainer >
@@ -147,6 +165,9 @@ const Map = () => {
 
             <button onClick={HandleCoordinates}>
                 click me
+            </button>
+            <button onClick={handleLocations}>
+                Get Nearest Points
             </button>
         </div >
     );
