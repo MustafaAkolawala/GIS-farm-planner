@@ -28,4 +28,4 @@ X = np.array(ct.fit_transform(args[:, ]))
 
 model = joblib.load("model.jbl.lzma")
 out = model.predict(args)
-print(out)
+print(out[0][0], out[0][1])
