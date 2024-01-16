@@ -3,6 +3,8 @@ import { Line } from 'react-chartjs-2';
 import axios from 'axios';
 import { Chart as ChartJS, LineElement, PointElement, LinearScale, Title, TimeScale } from 'chart.js';
 
+import "./Chart.css";
+
 import 'chartjs-adapter-date-fns';
 import { enUS } from 'date-fns/locale';
 
@@ -25,10 +27,9 @@ const PriceIndexChart = () => {
                 .map(grain => ({
                     label: grain,
                     data: data.map(item => item[grain]),
-                    fill: false
                 }));
 
-            console.log(datasets)
+            // console.log(datasets)
 
             setChartData({
                 labels,
@@ -45,7 +46,7 @@ const PriceIndexChart = () => {
     }, []);
 
     return (
-        <div>
+        <div className='chart'>
             <h2>Price Index Chart</h2>
             <Line
                 data={chartData}
@@ -65,6 +66,7 @@ const PriceIndexChart = () => {
                     },
                     label: "bitch",
                     borderColor: 'rgb(75, 192, 192)',
+                    backgroundColor: 'rgb(75, 192, 192)'
                 }}
             />
         </div>
