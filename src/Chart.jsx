@@ -25,6 +25,7 @@ const PriceIndexChart = () => {
                 .map(grain => ({
                     label: grain,
                     data: data.map(item => item[grain]),
+                    fill: false
                 }));
 
             console.log(datasets)
@@ -62,7 +63,8 @@ const PriceIndexChart = () => {
                             }
                         },
                     },
-                    backgroundColor: 'rgb(75, 192, 192)'
+                    label: "bitch",
+                    borderColor: 'rgb(75, 192, 192)',
                 }}
             />
         </div>

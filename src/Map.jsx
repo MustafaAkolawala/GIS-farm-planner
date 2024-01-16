@@ -173,12 +173,6 @@ const Map = () => {
                 </div>
 
             </div>
-            <div className='chart' style={{ height: '40rem', width: '60rem', backgroundColor: 'white' }}>
-                <PriceIndexChart />
-            </div>
-
-
-
             <button onClick={() => setShowMarker(!showMarker)}>
                 {showMarker ? 'Hide Marker' : 'Show Marker'}
             </button>
@@ -186,6 +180,15 @@ const Map = () => {
             <button onClick={handleLocations}>
                 Get Nearest Points
             </button>
+
+            <h2>Price Index Chart</h2>
+            <div className='chart' style={{ height: '40rem', width: '60rem', backgroundColor: 'white' }}>
+                <PriceIndexChart />
+            </div>
+
+
+
+
         </div >
     );
 };
