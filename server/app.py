@@ -3,6 +3,8 @@ import joblib
 from sklearn.preprocessing import LabelEncoder
 import pandas as pd
 import numpy as np
+from sklearn.preprocessing import MinMaxScaler
+
 
 app = Flask(__name__)
 
@@ -32,8 +34,12 @@ def fertilizer_recommendation():
 
     df['Soil Type'] = le.fit_transform(df['Soil Type'])
     df['Crop Type'] = le.fit_transform(df['Crop Type'])
+
+    scaler = MinMaxScaler()
     
-    X = np.array(df)
+    df_scaled = pd.DataFrame(scaler.fit_transform(df), columns=df.columns)
+    
+    X = np.array(df_scaled)
     
     prediction = model.predict(X)
     
