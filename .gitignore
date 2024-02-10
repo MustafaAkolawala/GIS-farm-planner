@@ -11,6 +11,8 @@ node_modules
 dist
 dist-ssr
 *.local
+.ipynb_checkpoints
+.virtual_documents
 
 # Editor directories and files
 .vscode/*
