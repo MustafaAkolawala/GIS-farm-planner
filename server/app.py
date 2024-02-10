@@ -5,7 +5,6 @@ import pandas as pd
 import numpy as np
 from sklearn.preprocessing import MinMaxScaler
 
-
 app = Flask(__name__)
 
 @app.route("/")
@@ -40,7 +39,7 @@ def fertilizer_recommendation():
     df_scaled = pd.DataFrame(scaler.fit_transform(df), columns=df.columns)
     
     X = np.array(df_scaled)
-    
+
     prediction = model.predict(X)
     
     predicted_fertilizer = fertilizer_mapping[prediction[0]]
