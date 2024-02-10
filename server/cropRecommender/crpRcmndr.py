@@ -10,4 +10,4 @@ class CropRecommender:
     def predict(self, x):
         x = pd.DataFrame(x).T
         x.columns = ["K", "N", "P", "humidity", "ph", "rainfall", "temperature"]
-        return self.model.predict(x)
+        return self.model.predict(x)[0]
