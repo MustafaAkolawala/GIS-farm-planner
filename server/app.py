@@ -34,23 +34,10 @@ def yield_prediction():
 
 @app.route("/fertilizer-recommendation", methods=["POST"])
 def fertilizer_recommendation():
-
-    fertilizer_mapping = {
-        0: "10-26-26",
-        1: "14-35-14",
-        2: "17-17-17",
-        3: "20-20",
-        4: "28-28",
-        5: "DAP",
-        6: "Urea",
-    }
-
     data = request.json
     prediction = fertilizer_recommender.predict(data)
 
-    predicted_fertilizer = fertilizer_mapping[prediction[0]]
-
-    return jsonify({"predicted_fertilizer": predicted_fertilizer})
+    return jsonify({"predicted_fertilizer": prediction})
 
 
 if __name__ == "__main__":

@@ -15,7 +15,7 @@ class FertilizerRecommender:
         data = pd.DataFrame(data).T
         data.columns = [
             "Temparature",
-            "Humidity",
+            "Humidity ",
             "Moisture",
             "Soil Type",
             "Crop Type",
@@ -28,7 +28,8 @@ class FertilizerRecommender:
         data["Crop_Code"] = data["Crop Type"].map(self.labels[1])
         data.drop(["Soil Type"], axis=1, inplace=True)
         data.drop(["Crop Type"], axis=1, inplace=True)
+        print(data)
 
-        fertMap = {v: k for k, v in self.labels[2]}
+        fertMap = {v: k for k, v in self.labels[2].items()}
         fertilizer = self.model.predict(self.ct.transform(data))[0]
         return fertMap[fertilizer]
