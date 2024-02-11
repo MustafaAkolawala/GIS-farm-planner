@@ -1,6 +1,7 @@
+from flask import Flask, request, jsonify
+
 from cropRecommender.crpRcmndr import CropRecommender
 from fertilizerDetection.fertilizer import FertilizerRecommender
-from flask import Flask, request, jsonify
 from yieldPredictor.yieldPredictor import YieldPredictor
 
 app = Flask(__name__)
@@ -50,3 +51,7 @@ def fertilizer_recommendation():
     predicted_fertilizer = fertilizer_mapping[prediction[0]]
 
     return jsonify({"predicted_fertilizer": predicted_fertilizer})
+
+
+if __name__ == "__main__":
+    app.run(debug=True, port=5000)
