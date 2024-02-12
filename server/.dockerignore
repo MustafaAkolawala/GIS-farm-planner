@@ -1,0 +1,11 @@
+.git/
+.gitignore
+.dockerignore
+build.sh
+destroy.sh
+package-lock.json
+node_modules/
+Dockerfile
+docker-compose.yml
+public/
+src/

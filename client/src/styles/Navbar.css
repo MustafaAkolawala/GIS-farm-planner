@@ -1,0 +1,38 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--color1);
+  color: var(--color2);
+  padding: 20px;
+}
+
+.navbar__left h1 {
+  font-size: 44px;
+  margin: 0;
+}
+
+.navbar__right__buttons {
+  margin: 0 20px;
+}
+
+.gtrans {
+  background-color: var(--white);
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+.navbar__right {
+  display: flex;
+  align-items: center;
+}
+
+.navbar__right img {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+
+.navbar__right svg {
+  width: 24px;
+  height: 24px;
+}

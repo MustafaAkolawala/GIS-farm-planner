@@ -1,0 +1,49 @@
+.searchbar {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+    font-size: large;
+}
+
+.content{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 0;
+}
+.searchbar input{
+    width: 50%;
+    height: 50%;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 1.2rem;
+}
+
+.map_map {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.Map__main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 12rem;
+}
+
+.forecast{
+    width:200px;
+    height:200px;
+    padding: 20px;
+    margin: 10px;
+    border: 1px solid black;
+    text-align: left ;
+    color: black;
+}
