@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../styles/Dashboard.css'
 import Navbar from '../components/Navbar'
 import Sidebar from '../components/Sidebar'
@@ -11,11 +11,11 @@ import FertilizerRecommendation from '../components/FertilizerRecommendation'
 function Dashboard() {
 
   const [active, setActive] = React.useState('Dashboard')
-
+  const[location, setLocation] = React.useState('')
   const data = {
     name: 'John Doe',
     email: 'name@example.com',
-    location: 'Mumbai',
+    location: 'City',
   }
 
   const options = [
@@ -56,6 +56,16 @@ function Dashboard() {
     }
   ]
 
+  const getMyLocationName = () => {
+    navigator.geolocation.getCurrentPosition((position) => {
+      fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${position.coords.latitude}&longitude=${position.coords.longitude}&localityLanguage=en`)
+        .then(response => response.json())
+        .then(data => {
+          setLocation(data.locality)
+        })
+    })
+  };
+
   const renderActive = () => {
     switch (active) {
       case 'Dashboard':
@@ -77,6 +87,13 @@ function Dashboard() {
     }
   }
 
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      getMyLocationName();
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className='dashboard'>
       <div className="dashboard__top">
@@ -87,7 +104,7 @@ function Dashboard() {
           <Sidebar
             name={data.name}
             email={data.email}
-            location={data.location}
+            location={location || data.location}
             options={options}
             active={active} // Pass the active option as a prop to the Sidebar component
           />
