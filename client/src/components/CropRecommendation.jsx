@@ -5,16 +5,53 @@ import img from "../assets/undraw_nature_benefits_re_kk70.svg"
 
 function CropRecommendation() {
 
-    const [nitrogen, setNitrogen] = useState('');
-    const [phosphorous, setPhosphorous] = useState('');
-    const [potassium, setPotassium] = useState('');
-    const [temperature, setTemperature] = useState('');
-    const [humidity, setHumidity] = useState('');
-    const [ph, setPh] = useState('');
-    const [rainfall, setRainfall] = useState('');
+    // const [nitrogen, setNitrogen] = useState('');
+    // const [phosphorous, setPhosphorous] = useState('');
+    // const [potassium, setPotassium] = useState('');
+    // const [temperature, setTemperature] = useState('');
+    // const [humidity, setHumidity] = useState('');
+    // const [ph, setPh] = useState('');
+    // const [rainfall, setRainfall] = useState('');
 
-    const handleSubmit = (e) => {
+    const [parameters, setParameters] = useState({
+        nitrogen: '',
+        phosphorous: '',
+        potassium: '',
+        temperature: '',
+        humidity: '',
+        ph: '',
+        rainfall: '',
+    })
+
+    const onChange = (e) => {
+        console.log(parameters)
+        setParameters({ ...parameters, [e.target.name]: e.target.value });
+    }
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        const body = []
+        Object.keys(parameters).forEach((key, i) => {
+            let value = parameters[key];
+            if (i > 2) {
+                value = parseFloat(value);
+            }
+            else{
+                value = parseInt(value)
+            }
+            body.push(value);
+        });
+        console.log(body)
+        
+        const response = await fetch('http://localhost:8080/api/crop-recommendation', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(body),
+        });
+        const res = response.json();
+        console.log(res) 
     };
 
     return (
@@ -30,31 +67,31 @@ function CropRecommendation() {
                     <form onSubmit={handleSubmit}>
                         <label className="CropRecommendation__label">
                             Nitrogen:
-                            <input className="CropRecommendation__input" type="text" value={nitrogen} onChange={(e) => setNitrogen(e.target.value)} />
+                            <input className="CropRecommendation__input" name='nitrogen' type="text" value={parameters.nitrogen} onChange={onChange} />
                         </label>
                         <label className="CropRecommendation__label">
                             Phosphorous:
-                            <input className="CropRecommendation__input" type="text" value={phosphorous} onChange={(e) => setPhosphorous(e.target.value)} />
+                            <input className="CropRecommendation__input" name='phosphorous' type="text" value={parameters.phosphorous} onChange={onChange} />
                         </label>
                         <label className="CropRecommendation__label">
                             Potassium:
-                            <input className="CropRecommendation__input" type="text" value={potassium} onChange={(e) => setPotassium(e.target.value)} />
+                            <input className="CropRecommendation__input" name='potassium' type="text" value={parameters.potassium} onChange={onChange} />
                         </label>
                         <label className="CropRecommendation__label">
                             Temperature:
-                            <input className="CropRecommendation__input" type="text" value={temperature} onChange={(e) => setTemperature(e.target.value)} />
+                            <input className="CropRecommendation__input" name='temperature' type="text" value={parameters.temperature} onChange={onChange} />
                         </label>
                         <label className="CropRecommendation__label">
                             Humidity:
-                            <input className="CropRecommendation__input" type="text" value={humidity} onChange={(e) => setHumidity(e.target.value)} />
+                            <input className="CropRecommendation__input" name='humidity' type="text" value={parameters.humidity} onChange={onChange} />
                         </label>
                         <label className="CropRecommendation__label">
                             pH:
-                            <input className="CropRecommendation__input" type="text" value={ph} onChange={(e) => setPh(e.target.value)} />
+                            <input className="CropRecommendation__input" name='ph' type="text" value={parameters.ph} onChange={onChange} />
                         </label>
                         <label className="CropRecommendation__label">
                             Rainfall:
-                            <input className="CropRecommendation__input" type="text" value={rainfall} onChange={(e) => setRainfall(e.target.value)} />
+                            <input className="CropRecommendation__input" name='rainfall' type="text" value={parameters.rainfall} onChange={onChange} />
                         </label>
                         <button type="submit">Submit</button>
                     </form>
