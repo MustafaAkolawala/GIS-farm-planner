@@ -5,6 +5,7 @@ import PriceIndexChart from './components/Chart'
 // import Signin from './pages/signin'
 import Navbar from './components/Navbar'
 import Dashboard from './pages/Dashboard'
+import Chatbot from './components/Chatbot'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -12,6 +13,7 @@ function App() {
   return (
     <>
       <Dashboard />
+      < Chatbot />
     </>
   )
 }
