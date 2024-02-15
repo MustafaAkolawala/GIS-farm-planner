@@ -9,6 +9,8 @@ function YeildPredictor() {
     const seasonOptions = { "Whole Year": 0, "Kharif": 1, "Rabi": 2, "Autumn": 3, "Summer": 4, "Winter": 5 };
     const stateOptions = { "Assam": 0, "Karnataka": 1, "Kerala": 2, "Meghalaya": 3, "West Bengal": 4, "Puducherry": 5, "Goa": 6, "Andhra Pradesh": 7, "Tamil Nadu": 8, "Odisha": 9, "Bihar": 10, "Gujarat": 11, "Madhya Pradesh": 12, "Maharashtra": 13, "Mizoram": 14, "Punjab": 15, "Uttar Pradesh": 16, "Haryana": 17, "Himachal Pradesh": 18, "Tripura": 19, "Nagaland": 20, "Chhattisgarh": 21, "Uttarakhand": 22, "Jharkhand": 23, "Delhi": 24, "Manipur": 25, "Jammu and Kashmir": 26, "Telangana": 27, "Arunachal Pradesh": 28, "Sikkim": 29 }
 
+    const [result, setResult] = useState(null)
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         const body = []
@@ -27,8 +29,9 @@ function YeildPredictor() {
             },
             body: JSON.stringify(body),
         });
-        const res = response.json();
+        const res = await response.json();
         console.log(res)
+        setResult(res["predicted_yield"])
     }
 
     const [parameters, setParameters] = useState({
@@ -103,6 +106,11 @@ function YeildPredictor() {
                 </div>
 
             </div>
+            {result &&
+                <div style={{ border: "2px green", backgroundColor: "white", borderRadius: "2rem" }}>
+                    <p><strong>Predicted Yield: </strong>{result}</p>
+                </div>
+            }
 
         </div>
     )

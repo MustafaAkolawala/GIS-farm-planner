@@ -21,6 +21,9 @@ function FertilizerRecommendation() {
     // 'Temparature', 'Humidity ', 'Moisture', 'Soil Type', 'Crop Type',
     //    'Nitrogen', 'Potassium', 'Phosphorous', 'Fertilizer Name'
 
+    const [result, setResult] = useState(null)
+
+
     const [parameters, setParameters] = useState({
         temperature: '',
         humidity: '',
@@ -56,8 +59,9 @@ function FertilizerRecommendation() {
             },
             body: JSON.stringify(body),
         });
-        const res = response.json();
-        console.log(res) 
+        const res = await response.json();
+        console.log(res)
+        setResult(res["predicted_fertilizer"])
     };
 
 
@@ -116,6 +120,11 @@ function FertilizerRecommendation() {
                     </form>
                 </div>
             </div>
+            {result &&
+            <div style={{border: "2px green", backgroundColor: "white", borderRadius: "2rem"}}>
+                <p><strong>Predicted Fertilizer: </strong>{Math.round(result)} kg/m</p>
+            </div>
+            }
         </div>
     );
 }

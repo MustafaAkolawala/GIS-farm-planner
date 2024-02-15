@@ -16,7 +16,7 @@ function Chatbot() {
 
                 body: JSON.stringify({ chat }),
             });
-            setResponse(res);
+            setChats(res);
         } catch (err) {
             console.log(err);
         }

@@ -45,13 +45,16 @@ function CropRecommendation() {
         });
         console.log(body)
         
-        fetch("/data").then((res) =>
-            res.json().then((data) => {
-                // Setting a data from api
-                setResult(data)
-                console.log(typeof(data))
-            })
-        );
+        const response = await fetch('http://localhost:8080/api/crop-recommendation', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(body),
+        });
+        const res = await response.json();
+        console.log(res)
+        setResult(res["recommended_crop"])
     };
 
     useEffect(() => {
@@ -102,8 +105,8 @@ function CropRecommendation() {
                 </div>
             </div>
             {result &&
-            <div>
-                <p>{result}</p>
+            <div style={{border: "2px green", backgroundColor: "white", borderRadius: "2rem"}}>
+                <p><strong>Recommended Crop: </strong>{result}</p>
             </div>
             }
         </div>
