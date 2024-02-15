@@ -30,7 +30,7 @@ model.load_state_dict(torch.load('plantDisease-resnet34.pth'))
 model.eval()
 
 
-image_paths = ['./test_data/PotatoEarlyBlight1.jpg', './test_data/AppleCedarRust2.jpg', './test_data/AppleScab1.jpg']
+image_paths = ['./test_data/AppleCedarRust2.jpg','./test_data/AppleScab1.jpg','./test_data/PotatoEarlyBlight1.jpg']
 for image_path in image_paths:
     predicted_label = predict_image(image_path, model)
     img = Image.open(image_path)
