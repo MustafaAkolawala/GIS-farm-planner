@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "../styles/CropRecommendation.css"
 import Connect from './Connect'
 import img from "../assets/undraw_nature_benefits_re_kk70.svg"
@@ -12,6 +12,8 @@ function CropRecommendation() {
     // const [humidity, setHumidity] = useState('');
     // const [ph, setPh] = useState('');
     // const [rainfall, setRainfall] = useState('');
+
+    const [result, setResult] = useState(null)
 
     const [parameters, setParameters] = useState({
         nitrogen: '',
@@ -43,16 +45,18 @@ function CropRecommendation() {
         });
         console.log(body)
         
-        const response = await fetch('http://localhost:8080/api/crop-recommendation', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(body),
-        });
-        const res = response.json();
-        console.log(res) 
+        fetch("/data").then((res) =>
+            res.json().then((data) => {
+                // Setting a data from api
+                setResult(data)
+                console.log(typeof(data))
+            })
+        );
     };
+
+    useEffect(() => {
+        console.log(result)
+    }, [result])
 
     return (
         <div className='CropRecommendation'>
@@ -97,6 +101,11 @@ function CropRecommendation() {
                     </form>
                 </div>
             </div>
+            {result &&
+            <div>
+                <p>{result}</p>
+            </div>
+            }
         </div>
     );
 }

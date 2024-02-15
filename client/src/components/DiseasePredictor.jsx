@@ -7,9 +7,13 @@ function DiseasePredictor() {
 
     const handleFileChange = (event) => {
         const file = event.target.files[0];
+        console.log(typeof(file))
+        console.log("HELLO ITS WORKS")
         if (file && file.type.startsWith('image/')) {
             setImage(URL.createObjectURL(file));
         }
+        console.log(typeof(image))
+        console.log(image)
     };
 
     const handleDrop = (event) => {
