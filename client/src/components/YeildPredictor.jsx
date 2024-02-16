@@ -56,7 +56,10 @@ function YeildPredictor() {
             <Connect />
             <div className="YeildPredictorBottom">
                 <img src={img} alt="" />
-                <div className='YeildPredictor__form'>
+                {result ? (
+                    <h2>Predicted Yield: {result} Metric Tonnes per hectres</h2>
+                ):(
+                    <div className='YeildPredictor__form'>
                     <h2>Fill Out the Details Manually</h2>
                     <form className='YeildPredictorForm' onSubmit={handleSubmit}>
                         <label htmlFor="crop" className="yieldPrediction__form__label">Crop:</label>
@@ -87,30 +90,27 @@ function YeildPredictor() {
                         </select>
 
                         <label htmlFor="area" className="yieldPrediction__form__label">Area:</label>
-                        <input onChange={onChange} value={parameters.area} type="text" id="area" name="area" className="yeildPrediction__Form__Select" />
+                        <input onChange={onChange} value={parameters.area} type="text" id="area" name="area" className="yeildPrediction__Form__Select" placeholder='in hectres'/>
 
                         <label htmlFor="production" className="yieldPrediction__form__label">Production:</label>
-                        <input onChange={onChange} value={parameters.production} type="text" id="production" name="production" className="yeildPrediction__Form__Select" />
+                        <input onChange={onChange} value={parameters.production} type="text" id="production" name="production" className="yeildPrediction__Form__Select" placeholder='in Metric tonnes'/>
 
                         <label htmlFor="annual_rainfall" className="yieldPrediction__form__label">Annual Rainfall:</label>
-                        <input onChange={onChange} value={parameters.annual_rainfall} type="text" id="annual_rainfall" name="annual_rainfall" className="yeildPrediction__Form__Select" />
+                        <input onChange={onChange} value={parameters.annual_rainfall} type="text" id="annual_rainfall" name="annual_rainfall" className="yeildPrediction__Form__Select" placeholder='in mm'/>
 
                         <label htmlFor="fertilizer" className="yieldPrediction__form__label">Fertilizer:</label>
-                        <input onChange={onChange} value={parameters.fertilizer} type="text" id="fertilizer" name="fertilizer" className="yeildPrediction__Form__Select" />
+                        <input onChange={onChange} value={parameters.fertilizer} type="text" id="fertilizer" name="fertilizer" className="yeildPrediction__Form__Select" placeholder='in KG'/>
 
                         <label htmlFor="pesticide" className="yieldPrediction__form__label">Pesticide:</label>
-                        <input onChange={onChange} value={parameters.pesticide} type="text" id="pesticide" name="pesticide" className="yeildPrediction__Form__Select" />
+                        <input onChange={onChange} value={parameters.pesticide} type="text" id="pesticide" name="pesticide" className="yeildPrediction__Form__Select" placeholder='in KG'/>
 
                         <button type='submit' >Submit</button>
                     </form>
                 </div>
+                )}
+
 
             </div>
-            {result &&
-                <div style={{ border: "2px green", backgroundColor: "white", borderRadius: "2rem" }}>
-                    <p><strong>Predicted Yield: </strong>{result}</p>
-                </div>
-            }
 
         </div>
     )
