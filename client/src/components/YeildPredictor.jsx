@@ -50,6 +50,8 @@ function YeildPredictor() {
         setParameters({ ...parameters, [e.target.name]: e.target.value });
     }
 
+    let yeild =  parameters.production /parameters.area
+
 
     return (
         <div className='YeildPredictor'>
@@ -57,7 +59,16 @@ function YeildPredictor() {
             <div className="YeildPredictorBottom">
                 <img src={img} alt="" />
                 {result ? (
-                    <h2>Predicted Yield: {result} Metric Tonnes per hectres</h2>
+                    <div className='YeildPredictor__result'>
+
+                        <h2 className='yeilPredictorResultHeader'> Your Yeild:</h2>
+                        <h2 className='yeilPredictorResultHeader'> {yeild.toFixed(2)}</h2>
+                        
+                        <h2 className='yeilPredictorResultHeader'> Predicted Yeild:</h2>
+                        
+                        <h2 className='yeilPredictorResultHeader'> {result.toFixed(2)} Metric Tonnes / hectres</h2>
+                        <button onClick={() => setResult(null)} className='YeildPredictor__resultButton'>Reset</button>
+                    </div>
                 ):(
                     <div className='YeildPredictor__form'>
                     <h2>Fill Out the Details Manually</h2>
