@@ -44,17 +44,17 @@ def crop_recommendation():
 @app.route("/api/yield-prediction", methods=["POST"])
 def yield_prediction():
     data = request.json
-    predicted_yield = yield_predictor.predict(data)
+    predicted_yield, message = yield_predictor.predict(data)
 
-    return jsonify({"predicted_yield": predicted_yield})
+    return jsonify({"predicted_yield": predicted_yield, "message": message})
 
 
-@app.route("/api/fertilizer-recommendation", methods=["POST"])
-def fertilizer_recommendation():
-    data = request.json
-    prediction = fertilizer_recommender.predict(data)
+# @app.route("/api/fertilizer-recommendation", methods=["POST"])
+# def fertilizer_recommendation():
+#     data = request.json
+#     prediction = fertilizer_recommender.predict(data)
 
-    return jsonify({"predicted_fertilizer": prediction})
+#     return jsonify({"predicted_fertilizer": prediction})
 
 
 @app.route("/api/chatbot", methods=["POST"])
