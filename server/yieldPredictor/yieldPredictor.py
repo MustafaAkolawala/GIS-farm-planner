@@ -5,6 +5,7 @@ import pandas as pd
 
 from openai import OpenAI
 
+
 class YieldPredictor:
     def __init__(self):
         with open("./yieldPredictor/labels.json") as f:
